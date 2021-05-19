@@ -1,0 +1,49 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Datos de Curriculum Vitae</h2>
+      <p class="lead">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tenetur
+        quam veniam! Atque illo sit perspiciatis veniam aperiam minus,
+        repellendus, distinctio exercitationem voluptatibus non sint, dolorum
+        doloremque. Suscipit, nisi voluptatibus!
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+
+        <app-personal-information (resumePersonalInformationEvent)="getPersonalInformation($event)"></app-personal-information>
+
+        <hr class="my-5" />
+
+        <app-certifies-studies (studiesEvent)="getStudiesEvent($event)"></app-certifies-studies>
+
+        <hr class="my-5" />
+
+        <app-experience (experienceEvent)="getExperienceEvent($event)"></app-experience>
+
+        <hr class="my-5" />
+
+        <app-skill (skillEvent)="getSkillEvent($event)"></app-skill>
+
+        <hr class="my-5" />
+
+        <div class="row">
+          <div class="col-md-8">
+            <button class="w-100 btn btn-primary btn-lg mb-3" [disabled]="!resume.userName" (click)="save()">
+              Guardar
+            </button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-link btn-lg mb-3" [disabled]="!success" [routerLink]="['/resumes', resume.userName]">
+              Ver Curriculum {{resume.userName}}
+            </button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+</div>

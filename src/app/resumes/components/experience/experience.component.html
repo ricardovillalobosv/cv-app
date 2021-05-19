@@ -1,0 +1,103 @@
+<h4 class="mb-3">Paso 3: Experiencia Laboral</h4>
+
+<div class="row gy-3">
+  <div class="col-md-9">
+    <label for="cc-name-e" class="form-label">Empresa</label>
+    <input
+      [(ngModel)]="experience.institution"
+      type="text"
+      class="form-control"
+      id="cc-name-e"
+      placeholder=""
+      required
+    />
+  </div>
+
+  <div class="col-md-3">
+    <label for="cc-expiration-e" class="form-label">Periodo de fechas</label>
+    <input
+      [(ngModel)]="experience.date"
+      type="text"
+      class="form-control"
+      id="cc-expiration-e"
+      placeholder="MM/YYYY - MM/YYYY"
+      required
+    />
+  </div>
+
+  <div class="col-md-12">
+    <label for="cc-number-e" class="form-label">Puesto</label>
+    <input
+      [(ngModel)]="experience.job"
+      type="text"
+      class="form-control"
+      id="cc-number-e"
+      placeholder=""
+      required
+    />
+  </div>
+
+  <div class="col-md-12">
+    <label for="cc-desc" class="form-label">Descripción</label>
+    <textarea
+      [(ngModel)]="experience.descripcion"
+      type="text"
+      class="form-control"
+      placeholder=""
+      required
+      id="cc-desc"
+      cols="30"
+      rows="2"
+    ></textarea>
+  </div>
+
+  <div class="col-md-3">
+    <button
+      class="btn btn-success"
+      (click)="add()"
+      [disabled]="!experience.job"
+    >
+      <span *ngIf="!editing; else elseBlock">Agregar</span>
+      <ng-template #elseBlock>Actualizar</ng-template>
+    </button>
+    <div>
+      <strong class="text-success" *ngIf="experiences.length"
+        >Paso 3 completado</strong
+      >
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div
+      class="card border-secondary mb-3"
+      *ngFor="let item of experiences; let i = index"
+    >
+      <div class="card-header">{{ item.institution }}</div>
+      <div class="card-body text-secondary">
+        <div class="row">
+          <div class="col-md-8">
+            <h5 class="card-title">{{ item.date }}</h5>
+            <p class="card-text">{{ item.job }}</p>
+            <p class="card-text">{{ item.descripcion }}</p>
+          </div>
+          <div class="col-md-4">
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="delete(i)"
+            >
+              Eliminar
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-info ml-1"
+              (click)="edit(i)"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

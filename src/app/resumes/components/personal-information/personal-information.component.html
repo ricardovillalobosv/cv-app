@@ -1,0 +1,76 @@
+<h4 class="mb-3">Paso 1: Información Personal</h4>
+<div class="row g-3">
+  <div class="col-sm-6">
+    <label for="firstName" class="form-label">Nombres</label>
+    <input
+      [(ngModel)]="resume.name"
+      type="text"
+      class="form-control"
+      id="firstName"
+      placeholder=""
+      value=""
+      required
+    />
+  </div>
+
+  <div class="col-sm-6">
+    <label for="lastName" class="form-label">Apellidos</label>
+    <input
+      [(ngModel)]="resume.lastName"
+      type="text"
+      class="form-control"
+      id="lastName"
+      placeholder=""
+      value=""
+      required
+    />
+  </div>
+
+  <div class="col-6">
+    <label for="username" class="form-label">Nombre de usuario</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text">@</span>
+      <input
+        [(ngModel)]="resume.userName"
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Usuario"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="col-6">
+    <label for="email" class="form-label">Correo </label>
+    <input
+      [(ngModel)]="resume.email"
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="you@example.com"
+    />
+  </div>
+
+  <div class="col-12">
+    <label for="address" class="form-label">Dirección</label>
+    <input
+      [(ngModel)]="resume.address"
+      type="text"
+      class="form-control"
+      id="address"
+      placeholder="1234 Main St"
+      required
+    />
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-success" (click)="save()" [disabled]="!resume.address">
+      Guardar información personal
+    </button>
+    <div>
+      <strong class="text-success" *ngIf="success">Paso 1 completado</strong>
+    </div>
+  </div>
+
+</div>

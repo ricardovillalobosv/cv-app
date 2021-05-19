@@ -1,0 +1,67 @@
+<h4 class="mb-3">Paso 2: Formación Académica</h4>
+
+<div class="row gy-3">
+  <div class="col-md-9">
+    <label for="cc-name" class="form-label">Institución</label>
+    <input
+      [(ngModel)]="studie.institution"
+      type="text"
+      class="form-control"
+      id="cc-name"
+      placeholder=""
+      required
+    />
+  </div>
+
+  <div class="col-md-3">
+    <label for="cc-expiration" class="form-label">Fecha de egreso</label>
+    <input
+      [(ngModel)]="studie.date"
+      type="text"
+      class="form-control"
+      id="cc-expiration"
+      placeholder="MM/YYYY"
+      required
+    />
+  </div>
+
+  <div class="col-md-12">
+    <label for="cc-number" class="form-label">Carrera</label>
+    <input
+      [(ngModel)]="studie.profesion"
+      type="text"
+      class="form-control"
+      id="cc-number"
+      placeholder=""
+      required
+    />
+  </div>
+
+  <div class="col-md-3">
+    <button class="btn btn-success" (click)="add()" [disabled]="!studie.profesion">
+      <span *ngIf="!editing; else elseBlock">Agregar</span>
+      <ng-template #elseBlock>Actualizar</ng-template>
+    </button>
+    <div>
+      <strong class="text-success" *ngIf="studies.length">Paso 2 completado</strong>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card border-secondary mb-3" *ngFor="let item of studies; let i = index">
+      <div class="card-header">{{item.date}}</div>
+      <div class="card-body text-secondary">
+        <div class="row">
+          <div class="col-md-8">
+            <h5 class="card-title">{{item.institution}}</h5>
+            <p class="card-text">{{item.profesion}}</p>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-outline-danger" (click)="delete(i)">Eliminar</button>
+            <button type="button" class="btn btn-outline-info ml-1" (click)="edit(i)">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

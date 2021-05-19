@@ -1,0 +1,76 @@
+<h4 class="mb-3">Paso 4: Conocimientos</h4>
+
+<div class="row gy-3">
+  <div class="col-md-9">
+    <label for="cc-name-s" class="form-label">Descripción</label>
+    <input
+      [(ngModel)]="skill.descripcion"
+      type="text"
+      class="form-control"
+      id="cc-name-s"
+      placeholder=""
+      required
+    />
+  </div>
+
+  <div class="col-md-3">
+    <label for="cc-expiration-s" class="form-label">porcentaje</label>
+    <input
+      [(ngModel)]="skill.valor"
+      type="number"
+      class="form-control"
+      id="cc-expiration-s"
+      required
+    />
+  </div>
+
+  <div class="col-md-3">
+    <button
+      class="btn btn-success"
+      (click)="add()"
+      [disabled]="!skill.valor"
+    >
+      <span *ngIf="!editing; else elseBlock">Agregar</span>
+      <ng-template #elseBlock>Actualizar</ng-template>
+    </button>
+    <div>
+      <strong class="text-success" *ngIf="skills.length"
+        >Paso 4 completado</strong
+      >
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div
+      class="card border-secondary mb-3"
+      *ngFor="let item of skills; let i = index"
+    >
+      <div class="card-header">{{ item.descripcion }}</div>
+      <div class="card-body text-secondary">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" [style]="width(item.valor)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{item.valor}}</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="delete(i)"
+            >
+              Eliminar
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-info ml-1"
+              (click)="edit(i)"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

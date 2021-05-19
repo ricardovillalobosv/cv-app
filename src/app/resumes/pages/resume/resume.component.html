@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="main-body mt-5">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                alt="Admin"
+                class="rounded-circle"
+                width="150"
+              />
+              <div class="mt-3">
+                <h4>{{ resume.name }} {{ resume.lastName }}</h4>
+                <p class="text-secondary mb-1">{{ resume.email }}</p>
+                <p class="text-muted font-size-sm">
+                  {{ resume.address }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h6 class="d-flex align-items-center mb-3">Conocimientos</h6>
+              <div *ngFor="let item of resume.skills">
+                <small>{{item.descripcion}}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div
+                    class="progress-bar bg-primary"
+                    role="progressbar"
+                    [style]="width(item.valor)"
+                    aria-valuenow="80"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <h6 class="mb-3">Formación Académica</h6>
+              </div>
+              <div class="col-sm-12 text-secondary">
+                <div class="card border-primary mb-3" style="max-width: 18rem;" *ngFor="let item of resume.studies">
+                  <div class="card-header">Fecha de egreso: {{item.date}}</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">Institución: {{item.institution}}</h5>
+                    <p class="card-text">Profesión: {{item.profesion}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <h6 class="mb-3">Experiencia Laboral</h6>
+              </div>
+              <div class="col-sm-12 text-secondary">
+                <div class="card border-primary mb-3" style="max-width: 18rem;" *ngFor="let item of resume.experience">
+                  <div class="card-header">Periodo: {{item.date}}</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">Institución: {{item.institution}}</h5>
+                    <p class="card-text">Trabajo: {{item.job}}</p>
+                    <p class="card-text">Descripcion: {{item.descripcion}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
